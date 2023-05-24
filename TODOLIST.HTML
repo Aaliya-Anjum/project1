@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>
+            Todo list
+          </title>
+        <link rel="stylesheet" href="todolist.css" type="text/css"/>
+        
+       
+    </head>
+    <body>
+        
+        <form class="form">
+            <center>
+              <h1>TO DO LIST</h1>
+            <input type="text" id="name" class="input" placeholder="Enter your task name"/>
+            <br>
+            <button type="button"id="btnclick" class="btn" onclick="addmore()">create task</button>
+            <ul id="box"></ul>
+            <span id="error"></span>
+          </center>
+        </div>
+         </body>
+         <script type="text/javascript">
+            function addmore()
+    {   
+       document.getElementById("error").innerHTML="";
+       let name=document.getElementById('name').value;
+        if (name==""){
+         document.getElementById("error").innerHTML="please enter value";  
+       }
+        else{
+             let x=document.getElementById('box');//box=ul;
+             let li=document.createElement('li');
+             li.textContent=name;
+             li.className="list" 
+             let ancr=document.createElement('a');
+             ancr.className="ancr"
+             ancr.textContent="x";
+             ancr.href="javascript:void(0)"//redirect nhi kre ga;
+             li.appendChild(ancr) ;
+             let pos=x.firstElemenChild;  //tell wheather the element is exit or not;if there is no data then give null value;
+             console.log(pos);
+             if(pos==null){
+             x.appendChild(li);//appending li in the ul with the help of id store in x;
+             } 
+             else{
+                     x.insertBefore(li,pos);
+             }
+              name= document.getElementById('name').value="";
+              let btn=document.querySelector('ul');
+              btn.addEventListener('click',function(e){
+                let a=document.getElementById('box');
+                let li=e.target.parentNode;
+                a.removeChild(li);
+             });
+ } }
+ </script>
+</html>
